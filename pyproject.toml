@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "hexlet-code"
+version = "0.1.0"
+description = ""
+authors = ["Andrei Emelianenko <spliitvein@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^5.0.4"
+python-dotenv = "^1.0.1"
+psycopg2-binary = "^2.9.9"
+dj-database-url = "^2.1.0"
+whitenoise = {extras = ["brotil"], version = "^6.6.0"}
+gunicorn = "^22.0.0"
+uvicorn = "^0.29.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

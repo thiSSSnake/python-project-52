@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+.trunk
+.env
+.vscode/
+.coverage
+.pytest_cache
+temp/

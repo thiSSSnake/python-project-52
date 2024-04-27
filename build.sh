@@ -3,7 +3,7 @@
 set -o errexit
 
 # Modify this line as needed for your package manager (pip, poetry, etc.)
-poetry add -r requirements.txt
+make install
 
 # Convert static asset files
 python manage.py collectstatic --no-input

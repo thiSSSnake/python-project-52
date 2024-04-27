@@ -6,7 +6,7 @@ set -o errexit
 make install
 
 # Convert static asset files
-python manage.py collectstatic --no-input
+python3 manage.py collectstatic --no-input
 
 # Apply any outstanding database migrations
-python manage.py migrate
+python3 manage.py migrate

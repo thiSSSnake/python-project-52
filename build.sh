@@ -5,7 +5,6 @@ set -o errexit
 # Modify this line as needed for your package manager (pip, poetry, etc.)
 pip install -r requirements.txt
 make install
-make makemigrations
 make migrate
 
 # Convert static asset files

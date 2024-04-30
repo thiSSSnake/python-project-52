@@ -1,0 +1,45 @@
+{% load i18n %}
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
+    <a class="navbar-brand" href="{% url 'home' %}">{% trans "Task manager" %}</a>
+
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarToggleExternalContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'users-detail' %}">{% trans "Users" %}</a>
+            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{% trans "Statuses" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{% trans "Labels" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{% trans "Tasks" %}</a>
+                </li>
+            {% endif %}
+        </ul>
+        <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">{{ user.username }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">{% trans "Log Out" %}</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">{% trans "Log In" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'users-create' %}">{% trans "Sign Up" %}</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,61 @@
+from django.utils.translation import gettext_lazy as _
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.contrib.messages.views import SuccessMessageMixin
+from .forms import *
+from .models import *
+from task_manager.mixins import AuthenticationMixin, AuthorizationMixin
+# Create your views here.
+
+class IndexView(ListView):
+    '''View list of users'''
+    model = User
+    template_name = 'users/index.html'
+    context_object_name = 'users'
+    extra_content = {
+        'title': _('Users')
+    }
+
+
+class UserCreateView(SuccessMessageMixin, CreateView):
+    '''Form creating a user'''
+    model = User
+    form_class = UserForm
+    success_message = _('User is successfully registered')
+    success_url = reverse_lazy('login')
+    template_name = 'form.html'
+    extra_context = {
+        'title': _('Create user'),
+        'button_text': _('Register'),
+    }
+
+
+class UserUpdateView(AuthenticationMixin, AuthorizationMixin, SuccessMessageMixin, UpdateView):
+    '''Update User info(username, full/second name, password)'''
+
+    model = User
+    form_class = UserForm
+    template_name = 'form.html'
+    permission_denied_message = _("You can't change this profile, this is not you")
+    permission_denied_url = reverse_lazy('users-detail')
+    success_message = _('User Profile is successfully changed')
+    success_url = reverse_lazy('users-detail')
+    extra_content = {
+        'title': _('Update user'),
+        'button_text': _('Update'),
+    }
+
+
+class UserDeleteView(AuthenticationMixin, AuthorizationMixin, SuccessMessageMixin, DeleteView):
+    '''Delete User(the current user can only delete himself)'''
+
+    model = User
+    template_name = 'users/delete.html'
+    permission_denied_message = _("You can't change this profile, this is not you")
+    permission_denied_url = reverse_lazy('users-detail')
+    success_message = _('User successfully deleted')
+    success_url = reverse_lazy('users-detail')
+    extra_content = {
+        'title': _('Delete'),
+        'button_text': _('Yes, delete'),
+    }

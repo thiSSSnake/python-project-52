@@ -3,8 +3,10 @@
 set -o errexit
 
 # Modify this line as needed for your package manager (pip, poetry, etc.)
-make install
 pip install -r requirements.txt
+make install
+make makemigrations
+make migrate
 
 # Convert static asset files
 python3 manage.py collectstatic --no-input

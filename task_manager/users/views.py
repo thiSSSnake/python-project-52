@@ -2,8 +2,8 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
-from .forms import *
-from .models import *
+from .forms import UserForm
+from .models import User
 from task_manager.mixins import AuthenticationMixin, AuthorizationMixin
 # Create your views here.
 

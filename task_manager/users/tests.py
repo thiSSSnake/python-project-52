@@ -6,7 +6,6 @@ from .models import User
 from django.contrib.messages import get_messages
 
 # Create your tests here.
-# class SetUpTestCase(TestCase):
 class MyTestSuite(unittest.TestSuite):
     def __init__(self):
         super(MyTestSuite, self).__init__()

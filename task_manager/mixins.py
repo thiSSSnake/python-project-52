@@ -38,13 +38,24 @@ class AuthorizationMixin(UserPassesTestMixin):
         return redirect(self.permission_denied_url)
 
 
-# class DeleteProtectMixin():
-#     protected_message = None
-#     protected_url = None
+class DeleteProtectMixin:
+    protected_message = None
+    protected_url = None
 
-#     def post(self, request, *args, **kwargs):
-#         try:
-#             super().post(request, args, kwargs)
-#         except ProtectedError:
-#             messages.error(request, self.protected_message)
-#             return redirect(self.protected_url)
+    def post(self, request, *args, **kwargs):
+        try:
+            super().post(request, args, kwargs)
+        except ProtectedError:
+            messages.error(request, self.protected_message)
+            return redirect(self.protected_url)
+
+
+class AuthorDeleteMixin:
+    author_message = None
+    author_url = None
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.id != self.get_object().author.id:
+            messages.error(self.request, self.author_message)
+            return redirect(self.author_url)
+        return super().dispatch(request, *args, **kwargs)

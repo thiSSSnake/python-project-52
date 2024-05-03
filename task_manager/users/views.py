@@ -4,7 +4,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from .forms import UserForm
 from .models import User
-from task_manager.mixins import AuthenticationMixin, AuthorizationMixin
+from task_manager.mixins import AuthenticationMixin, AuthorizationMixin, DeleteProtectMixin
 # Create your views here.
 
 class IndexView(ListView):
@@ -46,13 +46,15 @@ class UserUpdateView(AuthenticationMixin, AuthorizationMixin, SuccessMessageMixi
     }
 
 
-class UserDeleteView(AuthenticationMixin, AuthorizationMixin, SuccessMessageMixin, DeleteView):
+class UserDeleteView(DeleteProtectMixin, AuthenticationMixin, AuthorizationMixin, SuccessMessageMixin, DeleteView):
     '''Delete User(the current user can only delete himself)'''
 
     model = User
     template_name = 'users/delete.html'
     permission_denied_message = _("You can't change this profile, this is not you")
     permission_denied_url = reverse_lazy('users-detail')
+    protected_message = _('Unable to delete a user because he is being used')
+    protected_url = reverse_lazy('users-detail')
     success_message = _('User successfully deleted')
     success_url = reverse_lazy('users-detail')
     extra_content = {

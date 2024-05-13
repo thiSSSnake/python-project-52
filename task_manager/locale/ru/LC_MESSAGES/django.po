@@ -310,3 +310,7 @@ msgstr "Войти"
 #: task_manager/tasks/views.py:23
 msgid "Show"
 msgstr "Показать"
+
+#: task_manager/views.py:28 task_manager/views.py:33
+msgid "You are logged out"
+msgstr "Вы разлогинены"

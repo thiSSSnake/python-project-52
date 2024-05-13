@@ -24,15 +24,17 @@
                 </li>
             {% endif %}
         </ul>
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
             {% if user.is_authenticated %}
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">{{ user.username }}</a>
-                </li> -->
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">{% trans "Log Out" %}</a>
-                </li>
+
+                <form method="post" action="{% url 'logout' %}" style="margin-block-end: 0;">
+                    {% csrf_token %}
+                    <li class="nav-item">
+                        <input class="btn nav-link" type="submit" value="{% trans 'Log Out' %}" style="--bs-btn-padding-x: 0.75rem;">
+                    </li>
+                </form>
             {% else %}
+            
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'login' %}">{% trans "Log In" %}</a>
                 </li>

@@ -214,7 +214,7 @@ msgstr "Выход"
 
 #: task_manager/templates/navbar.html:37
 msgid "Log In"
-msgstr "Войти"
+msgstr "Вход"
 
 #: task_manager/templates/navbar.html:40
 msgid "Sign Up"

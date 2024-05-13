@@ -13,6 +13,6 @@
         <p>{% trans 'Are you sure that you want to delete this Label ?' %} {{ label.name }}</p>
         {% csrf_token %}
         {% bootstrap_form form %}
-        {% bootstrap_button "Yes, Delete" button_type="submit" button_class="btn btn-primary" %}
+        {% bootstrap_button button_text button_type="submit" button_class="btn btn-primary" %}
     </form>
 {% endblock %}

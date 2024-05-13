@@ -1,0 +1,18 @@
+{
+    "create": {
+      "valid": {
+        "name": "Code",
+        "body": "It is time",
+        "executor": 2,
+        "status": 1,
+        "labels": [1]
+      }
+    },
+    "update": {
+        "name": "Dream",
+        "body": "",
+        "executor": 2,
+        "status": 2,
+        "labels": [1,2]
+      }
+  }

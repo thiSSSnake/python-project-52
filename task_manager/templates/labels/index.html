@@ -7,7 +7,7 @@
 
 {% block content %}
     <h1 class="my-4">{{ title }}</h1>
-    <a href="{% url 'label_create' %}">{% trans 'Create Label' %}</a>
+    <a href="{% url 'label_create' %}">{% bootstrap_button button_text button_type="submit" button_class="btn btn-primary" %}</a>
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>

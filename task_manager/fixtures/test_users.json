@@ -1,0 +1,18 @@
+{
+    "create": {
+      "valid": {
+        "first_name": "Alex",
+        "last_name": "Mid",
+        "username": "bigZAZA",
+        "password1": "zxlfaqQW32",
+        "password2": "zxlfaqQW32"
+      }
+    },
+    "update": {
+        "first_name": "Grisha",
+        "last_name": "Kruger",
+        "username": "move_forward",
+        "password": "lexA456132",
+        "password2": "lexA456132"
+      }
+  }

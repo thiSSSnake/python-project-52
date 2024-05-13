@@ -5,6 +5,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from django.utils.translation import gettext_lazy as _
+from django.http import HttpResponse
+
 
 
 def index(request):

@@ -12,7 +12,7 @@ class IndexView(ListView):
     model = User
     template_name = 'users/index.html'
     context_object_name = 'users'
-    extra_content = {
+    extra_context = {
         'title': _('Users')
     }
 
@@ -40,7 +40,7 @@ class UserUpdateView(AuthenticationMixin, AuthorizationMixin, SuccessMessageMixi
     permission_denied_url = reverse_lazy('users-detail')
     success_message = _('User Profile is successfully changed')
     success_url = reverse_lazy('users-detail')
-    extra_content = {
+    extra_context = {
         'title': _('Update user'),
         'button_text': _('Update'),
     }
@@ -57,7 +57,7 @@ class UserDeleteView(DeleteProtectMixin, AuthenticationMixin, AuthorizationMixin
     protected_url = reverse_lazy('users-detail')
     success_message = _('User successfully deleted')
     success_url = reverse_lazy('users-detail')
-    extra_content = {
+    extra_context = {
         'title': _('Delete'),
         'button_text': _('Yes, delete'),
     }

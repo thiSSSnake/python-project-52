@@ -7,7 +7,17 @@
 
 {% block content %}
     <h1 class="my-4">{{ title }}</h1>
-    <a href="{% url 'task_create' %}">{% trans 'Create Task' %}</a>
+    <a class="btn btn-primary mb-3" href="{% url 'task_create' %}">{% trans 'Create task' %}</a>
+
+    
+    <div class="card mb-3">
+        <div class="card-body bg-light">
+            <form class="form-inline center" method="get">
+              {% bootstrap_form filter.form field_class="ml-2 mr-3" %}
+              {% bootstrap_button button_text button_type="submit" button_class="btn btn-primary" %}
+            </form>
+        </div>
+    </div>
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
@@ -25,10 +35,14 @@
                 {% for task in tasks %}
                     <tr>
                         <td>{{ task.id }}</td>
-                        <td>{{ task.name }}</td>
+                        <td><a href="{% url 'task_detail' pk=task.pk %}">{{ task.name }}</a></td>
                         <td>{{ task.status }}</td>
                         <td>{{ task.author }}</td>
+                        {% if task.executor %}
                         <td>{{ task.executor }}</td>
+                        {% else %}
+                        <td></td>
+                        {% endif %}
                         <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
                         <td>
                           <a href="{% url 'task_update' pk=task.pk %}">{% trans 'Update' %}</a>

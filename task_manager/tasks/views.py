@@ -8,15 +8,28 @@ from task_manager.mixins import AuthenticationMixin, AuthorDeleteMixin
 from .models import Task
 from .forms import TaskForm
 from task_manager.users.models import User
+from django_filters.views import FilterView
+from .filters import TaskFilter
 # Create your views here.
 
-class TaskListView(AuthenticationMixin, ListView):
+class TaskListView(AuthenticationMixin, FilterView):
 
     model = Task
+    filterset_class = TaskFilter
     template_name = 'tasks/index.html'
     context_object_name = 'tasks'
-    extra_content = {
+    extra_context = {
         'title': _('Tasks'),
+        'button_text': _('Show'),
+    }
+
+
+class TaskDetailView(AuthenticationMixin, DetailView):
+
+    model = Task
+    template_name = 'tasks/task_detail.html'
+    extra_context = {
+        'title': _('Viewing a task'),
     }
 
 
@@ -27,7 +40,7 @@ class TaskCreateView(AuthenticationMixin, SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('tasks')
     success_message = _('Task successfully created')
     template_name = 'form.html'
-    extra_content = {
+    extra_context = {
         'title': _('Create task'),
         'button_text': _('Create'),
     }
@@ -46,7 +59,7 @@ class TaskUpdateView(AuthenticationMixin, SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy('tasks')
     success_message = _('Task successfully updated')
     template_name = 'form.html'
-    extra_content = {
+    extra_context = {
         'title': _('Update Task'),
         'button_text': _('Update')
     }
@@ -60,7 +73,7 @@ class TaskDeleteView(AuthenticationMixin, AuthorDeleteMixin, SuccessMessageMixin
     author_url = reverse_lazy('tasks')
     success_message = _('Task successfully deleted')
     success_url = reverse_lazy('tasks')
-    extra_content = {
+    extra_context = {
         'title': _('Delete Task'),
         'button_text': _('Delete'),
     }

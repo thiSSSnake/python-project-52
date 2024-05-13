@@ -14,8 +14,9 @@ class LabelListView(ListView):
     model = Label
     template_name = 'labels/index.html'
     context_object_name = 'labels'
-    extra_content = {
+    extra_context = {
         'title': _('Labels'),
+        'button_text': _('Create label'),
     }
 
 
@@ -26,7 +27,7 @@ class LabelCreateView(AuthenticationMixin, SuccessMessageMixin, CreateView):
     template_name = 'form.html'
     success_message = _("Label successfully created")
     success_url = reverse_lazy('labels_detail')
-    extra_content = {
+    extra_context = {
         'title': _("Create Label"),
         'button_text': _("Create"),
     }
@@ -39,7 +40,7 @@ class LabelUpdateView(AuthenticationMixin, SuccessMessageMixin, UpdateView):
     template_name = 'form.html'
     success_message = _("Label successfully updated")
     success_url = reverse_lazy('labels_detail')
-    extra_content = {
+    extra_context = {
         'title': _("Update Label"),
         'button_text': _("Update")
     }

@@ -17,7 +17,7 @@ gunicorn = "^22.0.0"
 uvicorn = "^0.29.0"
 django-bootstrap5 = "^24.2"
 django-filter = "^24.2"
-rollbar = "^1.0.0"
+rollbar = "^0.16.3"
 pytest = "^8.2.0"
 
 

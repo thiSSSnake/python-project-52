@@ -3,19 +3,19 @@
       "model": "users.user",
       "pk": 1,
       "fields": {
-        "username": "Lennie",
+        "username": "user1",
         "first_name": "John",
-        "last_name": "Lennon",
-        "password": "John1940"
+        "last_name": "Doe",
+        "password": "JohnDoe199"
       }
     },
     {
       "model": "users.user",
       "pk": 2,
       "fields": {
-        "username": "Macca",
-        "first_name": "Paul",
-        "last_name": "McCartney",
+        "username": "user2",
+        "first_name": "Notus",
+        "last_name": "Eduser",
         "password": "lexA456132"
       }
     },
@@ -23,9 +23,9 @@
       "model": "users.user",
       "pk": 3,
       "fields": {
-        "username": "Hazza",
-        "first_name": "George",
-        "last_name": "Harrison",
+        "username": "user3",
+        "first_name": "Artur",
+        "last_name": "King",
         "password": "12345"
       }
     }

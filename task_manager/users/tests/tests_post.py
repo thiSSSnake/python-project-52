@@ -1,11 +1,11 @@
 import unittest
 from django.test import TestCase
 from django.test import Client
-from django.urls import reverse_lazy, reverse
-from .models import User
+from django.urls import reverse_lazy
+from task_manager.users.models import User
 from django.contrib.messages import get_messages
 
-# Create your tests here.
+
 class MyTestSuite(unittest.TestSuite):
     def __init__(self):
         super(MyTestSuite, self).__init__()
@@ -18,14 +18,14 @@ class MyTestSuite(unittest.TestSuite):
 class SetUpTestCase(TestCase):
     def setUp(self):
         self.user = User.objects.create(
-            first_name='Sergey', last_name='Simonov',
-            username='don_simon'
+            first_name='Andrey', last_name='Emelianenko',
+            username='a_foaem'
         )
         self.user.set_password('asdaqwtWxow33L')
         self.user.save()
 
         self.client.login(
-            username='don_simon', password='asdaqwtWxow33L',
+            username='a_foaem', password='asdaqwtWxow33L',
         )
 
 
@@ -57,11 +57,11 @@ class UsersListTest(TestCase):
 
 
 class UpdateUserTest(SetUpTestCase):
-     def test_user_update_success(self):
+    def test_user_update_success(self):
         response = self.client.post(
             reverse_lazy('user-update', kwargs={'pk': self.user.pk}),
-            {'first_name': 'Sergey', 'last_name': 'Simonov',
-             'username': 'don_simon_update', 'password1': 'asdaqwtWxow33L',
+            {'first_name': 'Adnrey', 'last_name': 'Emelianenko',
+             'username': 'foaem_update', 'password1': 'asdaqwtWxow33L',
              'password2': 'asdaqwtWxow33L'}
         )
         self.assertEqual(response.status_code, 302)
@@ -70,7 +70,7 @@ class UpdateUserTest(SetUpTestCase):
         self.assertEqual(len(messages), 1)
         self.assertIn(str(messages[0]), [
             'User is successfully updated',
-            'Профиль пользователя успешно изменен',
+            'Пользователь успешно изменен',
         ])
 
 

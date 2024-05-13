@@ -7,6 +7,7 @@ from task_manager.tasks.models import Task
 from .models import Label
 # Create your tests here.
 
+
 class SetUpTestCase(TestCase):
 
     def setUp(self):
@@ -72,37 +73,37 @@ class LabelCreateTest(SetUpTestCase):
 
 class LabelUpdateTest(SetUpTestCase):
     def test_label_update_view(self):
-        response = self.client.get(reverse_lazy('label_update', kwargs={'pk':self.label.pk}))
+        response = self.client.get(reverse_lazy('label_update', kwargs={'pk': self.label.pk}))  # noqa: E501
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, template_name='form.html')
 
     def test_label_update_success(self):
-        response = self.client.post(reverse_lazy('label_update', kwargs={'pk':self.label.pk}), {
-            'name': 'NOT IMPORTANT',
-        })
+        response = self.client.post(reverse_lazy('label_update', kwargs={'pk': self.label.pk}), {'name': 'NOT IMPORTANT', })  # noqa: E501
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('labels_detail'))
 
-        messages=list(get_messages(response.wsgi_request))
+        messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
         self.assertIn(str(messages[0]), [
             'Label successfully updated',
-            'Метка успешно обновлена'
+            'Метка успешно изменена'
         ])
 
 
 class LabelDeleteTest(SetUpTestCase):
     def test_label_delete_view(self):
-        response = self.client.get(reverse_lazy('label_delete', kwargs={'pk':self.label.pk}))
+        response = self.client.get(reverse_lazy('label_delete',
+                                                kwargs={'pk': self.label.pk}))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, template_name='labels/delete.html')
 
     def test_label_delete_success(self):
-        response = self.client.post(reverse_lazy('label_delete', kwargs={'pk':self.label.pk}))
+        response = self.client.post(reverse_lazy('label_delete',
+                                                 kwargs={'pk': self.label.pk}))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('labels_detail'))
 
-        messages=list(get_messages(response.wsgi_request))
+        messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
         self.assertIn(str(messages[0]), [
             'Label successfully deleted',

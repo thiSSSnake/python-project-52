@@ -27,7 +27,11 @@
 
             <div class="row p-1">
                 <div class="col">{% trans 'Executor' %}</div>
+                {% if task.executor %}
                 <div class="col">{{ task.executor }}</div>
+                {% else %}
+                <div class="col"></div>
+                {% endif %}
             </div>
 
             <div class="row p-1">

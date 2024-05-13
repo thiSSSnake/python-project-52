@@ -24,13 +24,13 @@ class TestListTasks(TaskTestCase):
         )
 
     def test_tasks_links(self):
-            response = self.client.get(reverse_lazy('tasks'))
+        response = self.client.get(reverse_lazy('tasks'))
 
-            self.assertContains(response, '/tasks/create/')
+        self.assertContains(response, '/tasks/create/')
 
-            for pk in range(1, self.count + 1):
-                self.assertContains(response, f'/tasks/{pk}/update/')
-                self.assertContains(response, f'/tasks/{pk}/delete/')
+        for pk in range(1, self.count + 1):
+            self.assertContains(response, f'/tasks/{pk}/update/')
+            self.assertContains(response, f'/tasks/{pk}/delete/')
 
     def test_tasks_not_logged_in_view(self):
         self.client.logout()
@@ -43,20 +43,23 @@ class TestListTasks(TaskTestCase):
 
 class TestFilterTaskView(TaskTestCase):
     def test_task_filter_status(self):
-        response = self.client.get(reverse_lazy('tasks'), {"status": self.status1.pk})
+        response = self.client.get(reverse_lazy('tasks'),
+                                   {"status": self.status1.pk})
         self.assertEqual(response.context['tasks'].count(), 2)
         self.assertContains(response, self.task1.name)
         self.assertContains(response, self.task2.name)
 
     def test_task_filter_executor(self):
-        response = self.client.get(reverse_lazy('tasks'), {"executor": self.user1.pk})
+        response = self.client.get(reverse_lazy('tasks'),
+                                   {"executor": self.user1.pk})
         self.assertEqual(response.context['tasks'].count(), 2)
         self.assertNotContains(response, self.task1.name)
         self.assertContains(response, self.task2.name)
         self.assertContains(response, self.task3.name)
 
     def test_task_filter_label(self):
-        response = self.client.get(reverse_lazy('tasks'), {"labels": self.label2.pk})
+        response = self.client.get(reverse_lazy('tasks'),
+                                   {"labels": self.label2.pk})
         self.assertEqual(response.context['tasks'].count(), 1)
         self.assertNotContains(response, self.task1.name)
         self.assertNotContains(response, self.task2.name)

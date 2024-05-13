@@ -10,6 +10,7 @@ from django.shortcuts import redirect
 from django.contrib import messages
 # Create your views here.
 
+
 class LabelListView(ListView):
     model = Label
     template_name = 'labels/index.html'
@@ -47,26 +48,26 @@ class LabelUpdateView(AuthenticationMixin, SuccessMessageMixin, UpdateView):
 
 
 class LabelsDeleteView(AuthenticationMixin, SuccessMessageMixin, DeleteView):
-        
+
     template_name = 'labels/delete.html'
     model = Label
     success_url = reverse_lazy('labels_detail')
     success_message = _('Label successfully deleted')
-    
+
     extra_context = {
         'title': _('Delete label'),
         'button_text': _('Yes, delete'),
     }
 
     def post(self, request, *args, **kwargs):
-            label_id = kwargs['pk']
-            tasks_with_label = Task.objects.filter(labels=label_id)
+        label_id = kwargs['pk']
+        tasks_with_label = Task.objects.filter(labels=label_id)
 
-            if tasks_with_label:
-                messages.error(
-                    self.request,
-                    _('It is not possible to delete a label '
-                    'because it is in use')
-                )
-                return redirect('labels_detail')
-            return super().post(request, *args, **kwargs)
+        if tasks_with_label:
+            messages.error(
+                self.request,
+                _('It is not possible to delete a label '
+                  'because it is in use')
+            )
+            return redirect('labels_detail')
+        return super().post(request, *args, **kwargs)

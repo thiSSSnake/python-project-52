@@ -214,11 +214,11 @@ msgstr "Выход"
 
 #: task_manager/templates/navbar.html:37
 msgid "Log In"
-msgstr ""
+msgstr "Войти"
 
 #: task_manager/templates/navbar.html:40
 msgid "Sign Up"
-msgstr "Вход"
+msgstr "Регистрация"
 
 #: task_manager/templates/statuses/delete.html:13
 msgid "Are you sure that you want to delete this Status ?"

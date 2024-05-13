@@ -15,3 +15,6 @@ local:
 
 translate:
 	poetry run django-admin compilemessages
+
+lint:
+	poetry run flake8 task_manager

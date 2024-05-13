@@ -24,13 +24,13 @@ class TestUserList(UserTestCase):
         )
 
     def test_users_links(self):
-            response = self.client.get(reverse_lazy('users-detail'))
+        response = self.client.get(reverse_lazy('users-detail'))
 
-            self.assertContains(response, '/users/create/')
+        self.assertContains(response, '/users/create/')
 
-            for pk in range(1, self.count + 1):
-                self.assertContains(response, f'/users/{pk}/update/')
-                self.assertContains(response, f'/users/{pk}/delete/')
+        for pk in range(1, self.count + 1):
+            self.assertContains(response, f'/users/{pk}/update/')
+            self.assertContains(response, f'/users/{pk}/delete/')
 
 
 class TestCreateUserView(UserTestCase):

@@ -30,9 +30,9 @@ class AuthorizationMixin(UserPassesTestMixin):
 
         return self.get_object() == self.request.user
 
-
     def handle_no_permission(self):
-        '''If error permission, we handle this error and redirect to denied url'''
+        '''If error permission,
+        we handle this error and redirect to denied url'''
 
         messages.error(self.request, self.permission_denied_message)
         return redirect(self.permission_denied_url)
@@ -44,7 +44,7 @@ class DeleteProtectMixin:
 
     def post(self, request, *args, **kwargs):
         try:
-            super().post(request, args, kwargs)
+            return super().post(request, *args, **kwargs)
         except ProtectedError:
             messages.error(request, self.protected_message)
             return redirect(self.protected_url)

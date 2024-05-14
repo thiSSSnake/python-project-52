@@ -1,10 +1,8 @@
 install:
 	poetry install
 
-makemigrations:
-	python manage.py makemigrations users
-
 migrate:
+	python manage.py makemigrations
 	python manage.py migrate
 
 start:

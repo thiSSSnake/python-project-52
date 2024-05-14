@@ -4,5 +4,6 @@ __pycache__/
 .env
 .vscode/
 .coverage
+coverage.xml
 .pytest_cache
 temp/

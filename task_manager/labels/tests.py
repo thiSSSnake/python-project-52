@@ -44,7 +44,7 @@ class SetUpTestCase(TestCase):
             status=Status.objects.get(pk=self.status.pk),
             executor=User.objects.get(pk=self.user.pk),
             author=self.user
-            )
+        )
         self.client.login(
             username='boss_of_newark', password='dqweRty21',
         )
@@ -59,7 +59,7 @@ class LabelCreateTest(SetUpTestCase):
     def test_label_create_success(self):
         response = self.client.post(reverse_lazy('label_create'), {
             'name': 'oracle_db',
-            })
+        })
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse_lazy('labels_detail'))
 

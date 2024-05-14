@@ -53,5 +53,5 @@ class StatusDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     template_name = 'statuses/delete.html'
     extra_context = {
         'title': _('Delete Status'),
-        'button_text': _('Delete'),
+        'button_text': _('Yes, delete'),
     }

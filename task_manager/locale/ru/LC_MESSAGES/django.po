@@ -231,7 +231,7 @@ msgstr "Вы уверены, что хотите удалить эту зада�
 #: task_manager/templates/tasks/index.html:26
 #: task_manager/templates/tasks/task_detail.html:34
 msgid "Status"
-msgstr "Статусы"
+msgstr "Статус"
 
 #: task_manager/templates/tasks/index.html:27
 #: task_manager/templates/tasks/task_detail.html:24

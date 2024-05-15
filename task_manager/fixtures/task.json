@@ -4,7 +4,7 @@
       "pk": 1,
       "fields": {
         "name": "Eat",
-        "body": "Make it now!",
+        "description": "Make it now!",
         "author": 1,
         "executor": 3,
         "status": 1,
@@ -17,7 +17,7 @@
       "pk": 2,
       "fields": {
         "name": "Sleep",
-        "body": "Zzzzz",
+        "description": "Zzzzz",
         "author": 1,
         "executor": 1,
         "status": 1,
@@ -30,7 +30,7 @@
       "pk": 3,
       "fields": {
         "name": "Repeat",
-        "body": "Again",
+        "description": "Again",
         "author": 3,
         "executor": 1,
         "status": 2,

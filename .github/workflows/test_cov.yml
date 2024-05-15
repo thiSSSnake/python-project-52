@@ -14,7 +14,7 @@ jobs:
       - name: Install python
         uses: actions/setup-python@v3
         with:
-          python-version: 3.8
+          python-version: 3.10
 
       - name: Install dependencies
         run: |
@@ -24,7 +24,7 @@ jobs:
       - name: Run tests
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          DATABASE_URL: sqlite:///db.sqlite3
+          DATABASE_URL: BASE_DIR / 'db.sqlite3'
         run: |
           make test
 

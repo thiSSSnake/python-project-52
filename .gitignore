@@ -7,3 +7,5 @@ __pycache__/
 coverage.xml
 .pytest_cache
 temp/
+requirements.txt
+db.sqlite3

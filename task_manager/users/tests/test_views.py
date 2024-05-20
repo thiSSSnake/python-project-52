@@ -1,4 +1,3 @@
-# Test views & html templates
 from django.urls import reverse_lazy
 from .testcase import UserTestCase
 

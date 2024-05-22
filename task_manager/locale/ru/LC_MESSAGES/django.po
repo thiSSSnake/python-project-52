@@ -318,3 +318,7 @@ msgstr "Вы разлогинены"
 #: task_manager/tasks/models:17
 msgid "Description"
 msgstr "Описание"
+
+#: task_manager/labels/views:74
+msgid "Are you sure that you want to delete "
+msgstr "Вы уверены, что хотите удалить "

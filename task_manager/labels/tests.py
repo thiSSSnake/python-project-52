@@ -95,7 +95,7 @@ class LabelDeleteTest(SetUpTestCase):
         response = self.client.get(reverse_lazy('label_delete',
                                                 kwargs={'pk': self.label.pk}))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='labels/delete.html')
+        self.assertTemplateUsed(response, template_name='delete.html')
 
     def test_label_delete_success(self):
         response = self.client.post(reverse_lazy('label_delete',

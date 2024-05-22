@@ -69,7 +69,7 @@ class TestDeleteUserView(UserTestCase):
         )
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='users/delete.html')
+        self.assertTemplateUsed(response, template_name='delete.html')
 
     def test_delete_task_not_logged_in_view(self):
         self.client.logout()

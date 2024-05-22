@@ -57,14 +57,19 @@ class UserDeleteView(DeleteProtectMixin,
     '''Delete User(the current user can only delete himself)'''
 
     model = User
-    template_name = 'users/delete.html'
+    template_name = 'delete.html'
     permission_denied_message = _("You can't change this profile, this is not you")  # noqa: E501
     permission_denied_url = reverse_lazy('users-detail')
     protected_message = _('Unable to delete a user because he is being used')
     protected_url = reverse_lazy('users-detail')
     success_message = _('User successfully deleted')
     success_url = reverse_lazy('users-detail')
-    extra_context = {
-        'title': _('Delete'),
-        'button_text': _('Yes, delete'),
-    }
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.get_object()
+        context['title'] = _('Delete')
+        context['message'] = _('Are you sure that you want to delete ')
+        context['button_text'] = _('Yes, delete')
+        context['entity_name'] = user.get_full_name()
+        return context

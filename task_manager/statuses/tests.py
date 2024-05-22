@@ -73,7 +73,7 @@ class StatusDeleteTestCase(SetUpTestCase):
             'status-delete', kwargs={'pk': self.status.pk}
         ))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='statuses/delete.html')
+        self.assertTemplateUsed(response, template_name='delete.html')
 
     def test_status_delete_success(self):
         response = self.client.post(

@@ -78,7 +78,7 @@ class TestCreateTaskView(TaskTestCase):
         response = self.client.get(reverse_lazy('task_create'))
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='form.html')
+        self.assertTemplateUsed(response, template_name='tasks/create.html')
 
     def test_create_task_not_logged_in_view(self):
         self.client.logout()
@@ -96,7 +96,7 @@ class TestUpdateTaskView(TaskTestCase):
         )
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='form.html')
+        self.assertTemplateUsed(response, template_name='tasks/update.html')
 
     def test_update_not_logged_in_view(self):
         self.client.logout()
@@ -116,7 +116,7 @@ class TestDeleteTaskView(TaskTestCase):
         )
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='delete.html')
+        self.assertTemplateUsed(response, template_name='tasks/delete.html')
 
     def test_delete_task_not_logged_in_view(self):
         self.client.logout()

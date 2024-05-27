@@ -13,10 +13,6 @@ class ListOfStatusesView(ListView):
     model = Status
     template_name = 'statuses/index.html'
     context_object_name = 'statuses'
-    extra_context = {
-        'title': _('Statuses'),
-        'button_text': _('Create status'),
-    }
 
 
 class StatusCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -25,11 +21,7 @@ class StatusCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     login_url = reverse_lazy('/login/')
     success_message = _('Status successfully added')
     success_url = reverse_lazy('statuses-detail')
-    template_name = 'form.html'
-    extra_context = {
-        'title': _('Create status'),
-        'button_text': _('Create'),
-    }
+    template_name = 'statuses/create.html'
 
 
 class StatusUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
@@ -38,11 +30,7 @@ class StatusUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     login_url = reverse_lazy('/login/')
     success_message = _('Status successfully changed')
     success_url = reverse_lazy('statuses-detail')
-    template_name = 'form.html'
-    extra_context = {
-        'title': _("Update Status"),
-        'button_text': _("Update"),
-    }
+    template_name = 'statuses/update.html'
 
 
 class StatusDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
@@ -50,13 +38,4 @@ class StatusDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     login_url = reverse_lazy('/login/')
     success_message = _('Status successfully deleted')
     success_url = reverse_lazy('statuses-detail')
-    template_name = 'delete.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        status = self.get_object()
-        context['title'] = _('Delete')
-        context['message'] = _('Are you sure that you want to delete ')
-        context['button_text'] = _('Yes, delete')
-        context['entity_name'] = status.__str__()
-        return context
+    template_name = 'statuses/delete.html'

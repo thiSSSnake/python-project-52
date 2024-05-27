@@ -6,8 +6,8 @@
 {% block title %}{{ page_title }} | {% trans 'Task Manager' %}{% endblock %}
 
 {% block content %}
-<h1 class="my-4">{{ title }}</h1>
-<a href="{% url 'statuses-create' %}">{% bootstrap_button button_text button_type="submit" button_class="btn btn-primary" %}</a>
+<h1 class="my-4">{% trans 'Statuses' %}</h1>
+<a href="{% url 'statuses-create' %}">{% trans 'Create status' as button_text %}{% bootstrap_button button_text button_type="submit" button_class="btn btn-primary" %}</a>
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>

@@ -37,7 +37,7 @@ class TestCreateUserView(UserTestCase):
         response = self.client.get(reverse_lazy('users-create'))
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='form.html')
+        self.assertTemplateUsed(response, template_name='users/create.html')
 
 
 class TestUpdateUserView(UserTestCase):
@@ -48,7 +48,7 @@ class TestUpdateUserView(UserTestCase):
         )
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='form.html')
+        self.assertTemplateUsed(response, template_name='users/update.html')
 
     def test_update_not_logged_in_view(self):
         self.client.logout()
@@ -69,7 +69,7 @@ class TestDeleteUserView(UserTestCase):
         )
 
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, template_name='delete.html')
+        self.assertTemplateUsed(response, template_name='users/delete.html')
 
     def test_delete_task_not_logged_in_view(self):
         self.client.logout()

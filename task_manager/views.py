@@ -14,10 +14,6 @@ class UserLogInView(SuccessMessageMixin, LoginView):
     '''Form log in User'''
     template_name = 'form.html'
     success_message = _('You are logged in !')
-    extra_context = {
-        'title': _('Login'),
-        'button_text': _('Enter'),
-    }
 
 
 class UserLogOutView(LogoutView):

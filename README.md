@@ -14,17 +14,15 @@ The service requires user registration and authorization. The functionality allo
 
 ## Dependencies
 - _python = "^3.10"_
-- _django = "^5.0.4"_
-- _python-dotenv = "^1.0.1"_
-- _psycopg2-binary = "^2.9.9"_
-- _dj-database-url = "^2.1.0"_
-- _whitenoise = {extras = ["brotil"], version = "^6.6.0"}_
-- _gunicorn = "^22.0.0"_
-- _uvicorn = "^0.29.0"_
-- _django-bootstrap5 = "^24.2"_
-- _django-filter = "^24.2"_
-- _rollbar = "^0.16.3"_
-- _pytest = "^8.2.0"_
+- _poetry = "^version 1.6.1"_
+
+## Instructions for the deployment
+Environment variables for application deployment:
+- SECRET_KEY(django application key)
+- DATABASE_URL(postgresql url)
+- DEBUG(For deploy = Flase, for dev = True)
+- ROLLBAR_ACCESS_TOKEN(Roll bar token for real-time error tracking on the service rollbar.com)
+- Documentation for deployment on the service render.com: https://docs.render.com/deploy-django
 
 ## Install & Start
 ```bash

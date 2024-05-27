@@ -15,41 +15,29 @@ class LabelListView(ListView):
     model = Label
     template_name = 'labels/index.html'
     context_object_name = 'labels'
-    extra_context = {
-        'title': _('Labels'),
-        'button_text': _('Create label'),
-    }
 
 
 class LabelCreateView(AuthenticationMixin, SuccessMessageMixin, CreateView):
 
     model = Label
     form_class = LabelForm
-    template_name = 'form.html'
+    template_name = 'labels/create.html'
     success_message = _("Label successfully created")
     success_url = reverse_lazy('labels_detail')
-    extra_context = {
-        'title': _("Create Label"),
-        'button_text': _("Create"),
-    }
 
 
 class LabelUpdateView(AuthenticationMixin, SuccessMessageMixin, UpdateView):
 
     model = Label
     form_class = LabelForm
-    template_name = 'form.html'
+    template_name = 'labels/update.html'
     success_message = _("Label successfully updated")
     success_url = reverse_lazy('labels_detail')
-    extra_context = {
-        'title': _("Update Label"),
-        'button_text': _("Update")
-    }
 
 
 class LabelsDeleteView(AuthenticationMixin, SuccessMessageMixin, DeleteView):
     '''Delete label with a protect for deleting'''
-    template_name = 'delete.html'
+    template_name = 'labels/delete.html'
     model = Label
     success_url = reverse_lazy('labels_detail')
     success_message = _('Label successfully deleted')
@@ -66,12 +54,3 @@ class LabelsDeleteView(AuthenticationMixin, SuccessMessageMixin, DeleteView):
             )
             return redirect('labels_detail')
         return super().post(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        label = self.get_object()
-        context['title'] = _('Delete')
-        context['message'] = _('Are you sure that you want to delete ')
-        context['button_text'] = _('Yes, delete')
-        context['entity_name'] = label.__str__()
-        return context

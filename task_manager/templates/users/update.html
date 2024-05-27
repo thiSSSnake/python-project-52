@@ -8,12 +8,12 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="my-4">{% trans 'Login' %}</h1>
+    <h1 class="my-4">{% trans 'Update user' %}</h1>
 
     <form method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
-        {% trans 'Enter' as button_text %}
+        {% trans 'Update' as button_text %}
         {% bootstrap_button button_text button_type="submit" button_class="btn btn-primary" %}
     </form>
 {% endblock %}

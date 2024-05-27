@@ -6,7 +6,7 @@
 {% block title %}{{ page_title }} | {% trans 'Task Manager' %}{% endblock %}
 
 {% block content %}
-    <h1 class="my-4">{{ title }}</h1>
+    <h1 class="my-4">{% trans 'Tasks' %}</h1>
     <a class="btn btn-primary mb-3" href="{% url 'task_create' %}">{% trans 'Create task' %}</a>
 
     
@@ -14,6 +14,7 @@
         <div class="card-body bg-light">
             <form class="form-inline center" method="get">
               {% bootstrap_form filter.form field_class="ml-2 mr-3" %}
+              {% trans 'Show' as button_text %}
               {% bootstrap_button button_text button_type="submit" button_class="btn btn-primary" %}
             </form>
         </div>

@@ -1,19 +1,8 @@
-{% extends "base.html" %}
+{% extends "delete_parent.html" %}
 
-{% load django_bootstrap5 %}
 {% load i18n %}
 
-{% block title %}{{ page_title }} | {% trans 'Task Manager' %}{% endblock %}
+{% block confirmation_message %}
+{% trans 'Are you sure that you want to delete ' %} {{ label.name }} ?
 
-{% block content %}
-
-<h1 class="my-4">{{ title }}</h1>
-
-    <form method="post">
-        <p>{% trans 'Are you sure that you want to delete ' %} {{ label.name }} ?</p>
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        {% trans 'Yes, delete' as del_btn %}
-        {% bootstrap_button del_btn button_type="submit" button_class="btn btn-outline-danger" %}
-    </form>
 {% endblock %}

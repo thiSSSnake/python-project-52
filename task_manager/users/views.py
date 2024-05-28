@@ -34,7 +34,6 @@ class UserUpdateView(AuthenticationMixin,
 
     model = User
     form_class = UserForm
-    # template_name = 'form.html'
     template_name = 'users/update.html'
     permission_denied_message = _("You can't change this profile, this is not you")  # noqa: E501
     permission_denied_url = reverse_lazy('users-detail')
@@ -57,3 +56,6 @@ class UserDeleteView(DeleteProtectMixin,
     protected_url = reverse_lazy('users-detail')
     success_message = _('User successfully deleted')
     success_url = reverse_lazy('users-detail')
+    extra_context = {
+        'title': _('Delete User'),
+    }

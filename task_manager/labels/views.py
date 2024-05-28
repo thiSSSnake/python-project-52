@@ -41,6 +41,9 @@ class LabelsDeleteView(AuthenticationMixin, SuccessMessageMixin, DeleteView):
     model = Label
     success_url = reverse_lazy('labels_detail')
     success_message = _('Label successfully deleted')
+    extra_context = {
+        'title': _('Delete label'),
+    }
 
     def post(self, request, *args, **kwargs):
         label_id = kwargs['pk']

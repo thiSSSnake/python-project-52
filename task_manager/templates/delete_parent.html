@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block title %}{{ page_title }} | {% trans 'Task Manager' %}{% endblock %}
+
+{% block content %}
+
+<h1 class="my-4">{{ title }}</h1>
+
+<form method="post">
+    <p>{% block confirmation_message %}{% endblock %}</p>
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% block delete_button %}
+        {% trans 'Yes, delete' as del_btn %}
+        {% bootstrap_button del_btn button_type="submit" button_class="btn btn-outline-danger" %}
+    {% endblock %}
+</form>
+
+{% endblock %}
